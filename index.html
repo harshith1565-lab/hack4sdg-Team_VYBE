@@ -1,39 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GajaGuard | Wildlife Early Warning</title>
-  <style>
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      background: #08120d;
-      color: #f3fff5;
-      font-family: Arial, sans-serif;
-      text-align: center;
-    }
-    main { max-width: 650px; padding: 30px; }
-    h1 { font-size: 48px; color: #77ed9a; }
-    p { color: #c5d5ca; line-height: 1.7; }
-    .status {
-      display: inline-block;
-      border: 1px solid #39764a;
-      padding: 10px 16px;
-      border-radius: 25px;
-      color: #8df5a7;
-    }
-  </style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GajaGuard | Wildlife Early Warning</title>
+<style>
+:root{color-scheme:dark;--bg:#07110d;--panel:#101d16;--line:#263c2d;--green:#8df0a5;--muted:#a1b4a5;--amber:#f3c56b}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#183b28 0,transparent 40%),var(--bg);color:#f2f7f1;font:15px/1.5 Inter,Segoe UI,Arial,sans-serif}
+main{max-width:1120px;margin:auto;padding:34px 22px 50px}.top{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}.brand{font-weight:800;letter-spacing:.13em;color:var(--green)}.pill{border:1px solid #735b27;background:#2b2515;color:var(--amber);border-radius:999px;padding:7px 12px;font-size:12px;font-weight:700}
+h1{font-size:clamp(40px,7vw,72px);line-height:1.02;letter-spacing:-.05em;margin:55px 0 15px}h1 span{color:var(--green)}.lead{color:#c3d2c5;font-size:18px;max-width:670px;margin:0 0 28px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:36px}.btn{display:inline-block;text-decoration:none;border-radius:10px;padding:12px 16px;font-weight:700}.primary{background:var(--green);color:#0a1a10}.secondary{border:1px solid var(--line);color:#eaf5ec;background:#101d16}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.card{background:linear-gradient(145deg,#122219,#0d1711);border:1px solid var(--line);border-radius:16px;padding:20px}.eyebrow{font-size:11px;color:var(--muted);font-weight:800;letter-spacing:.12em}.value{font-size:20px;font-weight:800;margin:10px 0 5px}.detail{color:var(--muted);font-size:14px}.section{margin-top:38px}.section h2{font-size:24px;margin:0 0 14px}.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.num{color:var(--green);font-size:12px;font-weight:800;letter-spacing:.1em}.steps h3{margin:9px 0 5px}.notice{margin-top:22px;padding:16px 18px;border:1px solid #69562c;background:#211e13;border-radius:12px;color:#f0d99e;font-size:14px}footer{margin-top:38px;border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font-size:12px}
+@media(max-width:720px){.grid,.steps{grid-template-columns:1fr}h1{margin-top:38px}}
+</style>
 </head>
-<body>
-  <main>
-    <div class="status">WILDLIFE SAFETY SYSTEM</div>
-    <h1>GajaGuard</h1>
-    <p>AI-powered elephant detection for safer communities and wildlife.</p>
-    <p>Detect. Alert. Protect.</p>
-    <p>Local AI detection and Arduino hardware operate through the monitoring computer.</p>
-  </main>
-</body>
-</html>
+<body><main>
+<header class="top"><div class="brand">GAJAGUARD <span style="color:#eaf5ec;font-weight:500">/ FIELD SAFETY CONCEPT</span></div><div class="pill">● LOCAL DETECTOR NOT CONNECTED</div></header>
+<h1>See the risk.<br><span>Alert responsibly.</span></h1>
+<p class="lead">A wildlife early-warning prototype designed to detect possible elephant sightings with YOLO, notify a team, and optionally signal an Arduino indicator — while keeping the AI and hardware on the monitoring computer.</p>
+<div class="actions"><a class="btn primary" href="https://github.com/harshith1565-lab/hack4sdg-Team_VYBE" target="_blank" rel="noopener">View project code ↗</a><a class="btn secondary" href="#how">How the system works</a></div>
+<section class="grid" aria-label="System components">
+<div class="card"><div class="eyebrow">AI DETECTOR</div><div class="value">YOLO + OpenCV</div><div class="detail">Runs locally against a camera feed. The hosted webpage does not run this Python process.</div></div>
+<div class="card"><div class="eyebrow">HARDWARE</div><div class="value">Arduino Nano</div><div class="detail">Optional USB serial output from the monitoring computer; this website cannot access the USB port.</div></div>
+<div class="card"><div class="eyebrow">NOTIFICATIONS</div><div class="value">ntfy alerts</div><div class="detail">The desktop prototype can send a possible-sighting notification when configured and running.</div></div>
+</section>
+<section class="section" id="how"><h2>Run the actual detector</h2><div class="steps">
+<div class="card"><div class="num">STEP 01</div><h3>Prepare the computer</h3><div class="detail">Use Windows with Python installed. Connect the webcam and, if using it, the Arduino Nano.</div></div>
+<div class="card"><div class="num">STEP 02</div><h3>Install dependencies</h3><div class="detail">Open a terminal in the downloaded repository and run:<br><code>py -m pip install ultralytics opencv-python pyserial</code></div></div>
+<div class="card"><div class="num">STEP 03</div><h3>Start local monitoring</h3><div class="detail">Run <code>py gajaguard_app.py</code>. Check the camera, COM port, and notification topic in the desktop app.</div></div>
+</div></section>
+<div class="notice"><strong>Prototype safety note:</strong> This hosted page is a project dashboard, not a live detection feed. No camera, AI, Arduino, or sighting status is connected to this page yet. Treat AI detections as unverified and do not use this prototype as the sole basis for field-safety decisions.</div>
+<footer>GAJAGUARD · Hack4SDG Team VYBE · Web dashboard hosted on Vercel; detection and hardware control remain local.</footer>
+</main></body></html>
